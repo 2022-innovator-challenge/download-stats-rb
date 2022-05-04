@@ -1,0 +1,20 @@
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
+metadata:
+  name: downloadstats-service
+  namespace: team2001
+spec:
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
+  service:
+    name: downloadstats-service
+    port: 3000
+    host: downloadstats
+  rules:
+    - path: /.*
+      methods: ['GET', 'POST']
+      mutators: []
+      accessStrategies:
+        - handler: noop
+          config: {}
+          # config:
+          #   required_scope: ['read', 'write']

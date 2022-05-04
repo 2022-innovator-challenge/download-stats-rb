@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: downloadstats-service
+spec:
+  selector:
+    app: downloadstats
+  ports:
+    - port: 3000
+      targetPort: 3000

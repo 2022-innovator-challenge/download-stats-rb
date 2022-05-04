@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: downloadstats-deployment
+  labels:
+    app: downloadstats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: downloadstats
+  template:
+    metadata:
+      labels:
+        app: downloadstats
+    spec:
+      containers:
+        - name: downloadstats
+          image: kyma-ic-2022.common.repositories.cloud.sap/i824643/downloadstats
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: kyma-artifactory-registry

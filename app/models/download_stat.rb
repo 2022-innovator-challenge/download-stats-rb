@@ -1,0 +1,2 @@
+class DownloadStat < ApplicationRecord
+end
