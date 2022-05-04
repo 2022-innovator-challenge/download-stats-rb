@@ -1,13 +1,13 @@
 apiVersion: gateway.kyma-project.io/v1alpha1
 kind: APIRule
 metadata:
-  name: downloadstats-service
+  name: downloadstats-api-rule
   namespace: team2001
 spec:
   gateway: kyma-gateway.kyma-system.svc.cluster.local
   service:
     name: downloadstats-service
-    port: 3000
+    port: 8080
     host: downloadstats
   rules:
     - path: /.*
