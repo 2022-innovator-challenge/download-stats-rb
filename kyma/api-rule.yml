@@ -7,7 +7,7 @@ spec:
   gateway: kyma-gateway.kyma-system.svc.cluster.local
   service:
     name: downloadstats-service
-    port: 8080
+    port: 3000
     host: downloadstats
   rules:
     - path: /.*

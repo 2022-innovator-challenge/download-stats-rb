@@ -20,8 +20,8 @@ COPY . /app
 
 # COPY Gemfile Gemfile.lock .
 # COPY . ./
-RUN cd app && bundle install
+RUN bundle install
 
 EXPOSE 3000
 
-CMD rails s
+CMD rails s -b 0.0.0.0

@@ -24,6 +24,6 @@ module DownloadStats
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.hosts << /.*\.c2aecf0\.kyma\.ondemand\.com/
+    config.hosts = nil
   end
 end
