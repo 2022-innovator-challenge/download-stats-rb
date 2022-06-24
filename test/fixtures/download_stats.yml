@@ -4,8 +4,10 @@ one:
   package: MyString
   version: MyString
   downloads: 1
+  date: 2022-06-24
 
 two:
   package: MyString
   version: MyString
   downloads: 1
+  date: 2022-06-24

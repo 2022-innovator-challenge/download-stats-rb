@@ -29,7 +29,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: download_stats
+  # username: postgres
 
   # The password associated with the postgres role (username).
   #password:
@@ -37,7 +37,7 @@ development:
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  # host: postgres-service
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -58,6 +58,8 @@ development:
 test:
   <<: *default
   database: download_stats_test
+
+  # username: postgres
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,5 +84,6 @@ test:
 production:
   <<: *default
   database: download_stats_production
-  username: download_stats
+  host: postgres-service
+  username: postgres
   password: <%= ENV["DOWNLOAD_STATS_DATABASE_PASSWORD"] %>

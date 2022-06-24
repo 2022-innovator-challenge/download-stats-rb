@@ -12,6 +12,7 @@ RUN gem --version
 # RUN gem install websocket-driver -V
 RUN gem install rails -V
 
+
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
@@ -24,4 +25,4 @@ RUN bundle install
 
 EXPOSE 3000
 
-CMD rails s -b 0.0.0.0
+CMD rails db:migrate && rails s -b 0.0.0.0 -e production

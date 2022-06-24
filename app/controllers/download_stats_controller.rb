@@ -21,6 +21,7 @@ class DownloadStatsController < ApplicationController
   private
 
   def stat_params
-    params.require(:download_stat).permit(:package, :version, :downloads)
+    params.require([:package, :version, :downloads])
+    params.reverse_merge({:date => Time.now}).permit(:package, :version, :downloads, :date)
   end
 end

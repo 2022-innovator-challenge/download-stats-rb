@@ -4,6 +4,7 @@ class CreateDownloadStats < ActiveRecord::Migration[7.0]
       t.string :package
       t.string :version
       t.integer :downloads
+      t.date :date
 
       t.timestamps
     end

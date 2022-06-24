@@ -2,7 +2,8 @@ apiVersion: gateway.kyma-project.io/v1alpha1
 kind: APIRule
 metadata:
   name: downloadstats-api-rule
-  namespace: team2001
+  labels:
+    app: downloadstats
 spec:
   gateway: kyma-gateway.kyma-system.svc.cluster.local
   service:
