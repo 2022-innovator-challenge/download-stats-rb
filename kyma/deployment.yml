@@ -19,5 +19,8 @@ spec:
           image: kyma-ic-2022.common.repositories.cloud.sap/i824643/downloadstats:latest
           ports:
             - containerPort: 3000
+          env:
+            - name: RAILS_ENV
+              value: production
       imagePullSecrets:
         - name: kyma-artifactory-registry

@@ -25,4 +25,4 @@ RUN bundle install
 
 EXPOSE 3000
 
-CMD rails db:migrate && rails s -b 0.0.0.0 -e production
+CMD rails db:migrate && rails s -b 0.0.0.0
