@@ -28,7 +28,6 @@ class DownloadStatsController < ApplicationController
   end
 
   def destroy
-    debugger
     if DownloadStat.destroy(params[:id])
       @stats = DownloadStat.all
       render json: @stats

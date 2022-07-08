@@ -22,5 +22,6 @@ spec:
           env:
             - name: RAILS_ENV
               value: production
+          imagePullPolicy: Always
       imagePullSecrets:
         - name: kyma-artifactory-registry
