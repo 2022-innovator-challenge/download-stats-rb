@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :download_stats, :path => 'download-stats'
+
+  post 'download-stats/bulk', to: 'download_stats#bulk_create'
 end
