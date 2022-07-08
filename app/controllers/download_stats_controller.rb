@@ -28,8 +28,17 @@ class DownloadStatsController < ApplicationController
   end
 
   def destroy
-    @stat = DownloadStat.find(params[:id])
-    if @stat.destroy
+    debugger
+    if DownloadStat.destroy(params[:id])
+      @stats = DownloadStat.all
+      render json: @stats
+    else 
+      render json: { error: 'Could not delete download stats.' }, status: 400
+    end
+  end
+
+  def bulk_destroy
+    if DownloadStat.destroy(params["_json"])
       @stats = DownloadStat.all
       render json: @stats
     else 

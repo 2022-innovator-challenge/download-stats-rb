@@ -12,7 +12,7 @@ spec:
     host: downloadstats
   rules:
     - path: /.*
-      methods: ['GET', 'POST']
+      methods: ['GET', 'POST', 'DELETE']
       mutators: []
       accessStrategies:
         - handler: noop
