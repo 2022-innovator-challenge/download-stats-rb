@@ -5,9 +5,9 @@ metadata:
   labels:
     app: downloadstats
 spec:
-  storageClassName: ''
+  storageClassName: default
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi

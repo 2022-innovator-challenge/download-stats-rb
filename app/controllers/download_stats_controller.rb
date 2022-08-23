@@ -1,6 +1,20 @@
 class DownloadStatsController < ApplicationController
   def index
-    @stats = DownloadStat.all
+    params = filter_params
+    # filter_params
+    if (params.empty?)
+      @stats = DownloadStat.all
+    else
+      stats = DownloadStat.none
+      params[:package].each { |packageAndVersion|
+        package, version = packageAndVersion.split(/(?<!^)@/)
+        stats = stats.or(DownloadStat.filter_by_package(package).filter_by_version(version))
+      }
+      stats = stats.and(DownloadStat.filter_by_start_date(params[:startDate]))
+      stats = stats.and(DownloadStat.filter_by_end_date(params[:endDate]))
+      @stats = stats
+    end
+    # debugger
     render json: @stats
   end
 
@@ -47,8 +61,15 @@ class DownloadStatsController < ApplicationController
 
   private
 
+  def filter_params(parameters = params)
+    if params[:package].kind_of?(String)
+      parameters = parameters.merge({:package => [parameters[:package]]}) 
+    end
+    parameters.permit(:startDate, :endDate, :package, :package => [])
+  end
+
   def stat_params(parameters = params)
     parameters.require([:package, :version, :downloads])
-    parameters.reverse_merge({:date => Time.now}).permit(:package, :version, :downloads, :date)
+    parameters.with_defaults({:date => Time.now}).permit(:package, :version, :downloads, :date)
   end
 end

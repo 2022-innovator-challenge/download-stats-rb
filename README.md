@@ -1,24 +1,22 @@
-# README
+# Download stats service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Get download stats for your npm packages.
+Get and modify all data through `/download-stats`.
 
-Things you may want to cover:
+## Filtering
 
-* Ruby version
+### Filter by package
 
-* System dependencies
+`download-stats?package=@sap-cloud-sdk/util`
 
-* Configuration
+### Filter by package and major version
 
-* Database creation
+`download-stats?package=@sap-cloud-sdk/util@2`
 
-* Database initialization
+### Filter by packages and major version
 
-* How to run the test suite
+`download-stats?package[]=@sap-cloud-sdk/util@2&package[]=@sap/cds`
 
-* Services (job queues, cache servers, search engines, etc.)
+### Filter by date (inclusive)
 
-* Deployment instructions
-
-* ...
+`download-stats?startDate=2022-08-01&endDate=2022-08-31`
