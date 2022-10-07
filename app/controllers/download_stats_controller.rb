@@ -5,14 +5,15 @@ class DownloadStatsController < ApplicationController
     if (params.empty?)
       @stats = DownloadStat.all
     else
-      stats = DownloadStat.none
-      params[:package].each { |packageAndVersion|
-        package, version = packageAndVersion.split(/(?<!^)@/)
-        stats = stats.or(DownloadStat.filter_by_package(package).filter_by_version(version))
-      }
-      stats = stats.and(DownloadStat.filter_by_start_date(params[:startDate]))
-      stats = stats.and(DownloadStat.filter_by_end_date(params[:endDate]))
-      @stats = stats
+      stats = DownloadStat.all
+      if (params[:package])
+        stats = DownloadStat.none
+        (params[:package]).each { |packageAndVersion|
+          package, version = packageAndVersion.split(/(?<!^)@/)
+          stats = stats.or(DownloadStat.filter_by_package(package).filter_by_version(version))
+        }
+      end
+      @stats = stats.and(DownloadStat.filter_by_start_date(params[:startDate]).filter_by_end_date(params[:endDate]))
     end
     # debugger
     render json: @stats
